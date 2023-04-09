@@ -1,9 +1,7 @@
 ---
-- hosts: server
-  become: yes
-  become_method: sudo
+- hosts: all
   tasks:
-- name: Update all packages to their latest version
-  ansible.builtin.apt:
-    name: "*"
-    state: latest
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+        upgrade: yes
